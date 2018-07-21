@@ -2,7 +2,10 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 
-def index(request):
-    user = request.user
+from . import models
 
-    return render(request, 'articles/index.html', {'content': 'Hello world!', 'user': user})
+def index(request):
+
+    query = models.Article.objects.all()
+
+    return render(request, 'articles/index.htm', {'query': query})
