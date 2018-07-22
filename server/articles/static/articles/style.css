@@ -1,3 +1,50 @@
-.item img{
-    max-height: 250px
+/*Стили base.htm*/
+body{
+	font-family: sans-serif;
+	width: 1000px;
+	margin: 0 auto 25px;
+}
+
+.body{
+	padding: 10px 10px;
+	margin-top: 5px;
+	behavior: url(path-to/PIE.htc);
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	box-shadow: -4px 4px 10px #C1C1C1;
+	-moz-box-shadow: -4px 4px 10px #C1C1C1;
+	-webkit-box-shadow: -4px 4px 10px #C1C1C1;
+}
+
+/*Стили inc_menu.htm*/
+.menu{
+	font: bold 17px cursive;
+}
+
+.menu a{
+	text-decoration: none;
+	color: #0F94F6;
+}
+
+.menu a:hover{
+text-decoration: underline;
+}
+
+.menu li{
+	display: inline;
+	margin: 4px;
+	padding: 2px;
+}
+
+/*Стили index.htm*/
+.content img{
+	max-height: 300px;
+	float: left; /* Выравнивание по левому краю */
+    margin: 17px 7px 7px 0; /* Отступы вокруг картинки */
+}
+
+.created{
+	font-size: 12px
 }
