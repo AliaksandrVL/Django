@@ -1,0 +1,13 @@
+{% extends 'master.htm' %}
+
+{% block title %}
+    {{ instance.name }}
+{% endblock %}
+
+{% block menu %}
+    {% include 'articles/includes/inc_menu.htm' %}
+{% endblock %}
+
+{% block content %}
+    {{ instance.content }}
+{% endblock %}
