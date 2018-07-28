@@ -1,0 +1,28 @@
+{% extends 'master.htm' %}
+
+{% block title %}
+    My Blog
+{% endblock %}
+
+{% block menu %}
+    {% include 'articles/includes/inc_menu.htm' %}
+{% endblock %}
+
+{% block content %}
+    <table>
+        {% for itm in query %}
+        <tr>
+            <td><h3><a href = "{% url 'articles:detail' itm.id %}">{{ itm.name|upper }}</a></h3></td>
+        </tr>
+        <tr class="content">
+            <td><img src="/media/{{ itm.image }}" alt=""><p>{{ itm.content|linebreaksbr }}</p></td>
+        </tr>
+        <tr>
+            <td><button>Добавить статью</button></td>
+        </tr>
+        <tr class="created">
+            <td><p> Добавлено {{ itm.created|date:"D, d M Y, H:i" }}</p></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
