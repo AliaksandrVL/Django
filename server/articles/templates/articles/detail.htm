@@ -9,5 +9,19 @@
 {% endblock %}
 
 {% block content %}
-    {{ instance.content }}
+    <table>
+        <tr>
+            <td><h3>{{ instance.name|upper }}</h3></td>
+        </tr>
+        <tr class="content">
+            <td><img src="/media/{{ instance.image }}" alt=""><p>{{ instance.content|linebreaksbr }}</p></td>
+        </tr>
+        <tr class="created">
+            <td><p>Добавлено {{ instance.created|date:"D, d M Y, H:i" }}</p></td>
+        </tr>
+    </table>
+
+    <form action="{% url 'articles:update' instance.id %}" method="GET">
+        <input class="btn btn-primary" type="submit" value="Update">
+    </form>
 {% endblock %}
