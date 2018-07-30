@@ -33,8 +33,6 @@ class ArticleCreate(CreateView):
     template_name = 'articles/edit.htm'
 
 class ArticleUpdate(UpdateView):
-    print('*'*50)
-    
     model = models.Article
 
     form_class = forms.ArticleForm
