@@ -1,15 +1,42 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
+
+from django.views.generic import View, CreateView, ListView, DetailView, UpdateView
+
+from django.urls import reverse_lazy
 
 from django.http import HttpResponse
 
 from . import models
+from . import forms
 
-def article_list(request):
-    query = get_list_or_404(models.Article)
+class ArticleList(ListView):
+    context_object_name = 'query'
+    
+    template_name = 'articles/index.htm'
 
-    return render(request, 'articles/index.htm', {'query': query})
+    queryset = get_list_or_404(models.Article)
+    
+class ArticleDetail(DetailView):
+    model = models.Article
 
-def article_detail(request, pk):
-    instance = get_list_or_404(models.Article, id=pk)
+    context_object_name = 'instance'
 
-    return render(request, 'articles/detail.htm', {'instance': instance})
+    template_name = 'articles/detail.htm'
+
+class ArticleCreate(CreateView):
+    model = models.Article
+
+    form_class = forms.ArticleForm
+
+    success_url = reverse_lazy('articles:list')
+
+    template_name = 'articles/edit.htm'
+
+class ArticleUpdate(UpdateView):
+    model = models.Article
+
+    form_class = forms.ArticleForm
+
+    success_url = reverse_lazy('articles:detail')
+
+    template_name = 'articles/edit.htm'

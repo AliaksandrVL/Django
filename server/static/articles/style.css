@@ -39,12 +39,19 @@ text-decoration: underline;
 }
 
 /*Стили index.htm*/
-.content img{
-	max-height: 300px;
-	float: left; /* Выравнивание по левому краю */
-    margin: 17px 7px 7px 0; /* Отступы вокруг картинки */
+.list img{
+	max-height: 100px;
+	float: top; /* Выравнивание по верхнему краю */
+    /*margin: 4px 7px 7px 0; /* Отступы вокруг картинки */
 }
 
 .created{
-	font: bold 12px cursive
+	font-size: 12px
+}
+
+/*Стили detail.htm*/
+.content img{
+	max-height: 250px;
+	float: left; /* Выравнивание по левому краю */
+    margin: 4px 7px 7px 0; /* Отступы вокруг картинки */
 }
