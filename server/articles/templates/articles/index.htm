@@ -8,6 +8,10 @@
     {% include 'articles/includes/inc_menu.htm' %}
 {% endblock %}
 
+{% block menuCategories %}
+    {% include 'articles/includes/inc_menuCategories.htm' %}
+{% endblock %}
+
 {% block content %}
     <table>
         {% for itm in query %}
