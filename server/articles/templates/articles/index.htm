@@ -1,5 +1,11 @@
 {% extends 'master.htm' %}
 
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'articles/style.css' %}">
+{% endblock %}
+
 {% block title %}
     My Blog
 {% endblock %}
@@ -8,21 +14,51 @@
     {% include 'articles/includes/inc_menu.htm' %}
 {% endblock %}
 
+{% block menuCategories %}
+    {% include 'articles/includes/inc_menuCategories.htm' %}
+{% endblock %}
+
 {% block content %}
     <table>
         {% for itm in query %}
-        <tr>
-            <td><h3><a href = "{% url 'articles:detail' itm.id %}">{{ itm.name|upper }}</a></h3></td>
-        </tr>
-        <tr class="content">
-            <td><img src="/media/{{ itm.image }}" alt=""><p>{{ itm.content|linebreaksbr }}</p></td>
-        </tr>
-        <tr>
-            <td><button>Добавить статью</button></td>
-        </tr>
-        <tr class="created">
-            <td><p> Добавлено {{ itm.created|date:"D, d M Y, H:i" }}</p></td>
-        </tr>
+            <tr>
+                <td><h3><a href = "{% url 'articles:detail' itm.id %}">{{ itm.name|upper }}</a></h3></td>
+            </tr>
+            <tr class="list">
+                <td><img src="/media/{{ itm.image }}" alt=""><p>{{ itm.content|linebreaksbr }}</p></td>
+            </tr>
+            <tr class="created">
+                <td><p>Добавлено {{ itm.created|date:"D, d M Y, H:i" }}</p></td>
+            </tr>
         {% endfor %}
+        <tr class="row pagination-box">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                    </li>
+                {% endif %}
+
+                {% if page_obj.paginator.num_pages > 1 %}
+                    {% for number in page_obj.paginator.page_range %}
+                        {% if number == page_obj.number %}
+                            <li class="page-item">
+                                <span class="page-link active">{{ number }}</span>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ number }}">{{ number }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </tr>
     </table>
 {% endblock %}

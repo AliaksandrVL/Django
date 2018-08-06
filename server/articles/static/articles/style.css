@@ -38,13 +38,38 @@ text-decoration: underline;
 	padding: 2px;
 }
 
+/*Стили inc_menuCategories.htm*/
+.menuCategories{ /* Левая колонка */
+	font: bold 17px cursive;
+    float: left; /* Обтекание справа */
+    width: 60px; /* Ширина колонки */
+    padding: 10px; /* Поля вокруг текста */
+    margin: 10px 10px 0px -150px; /* Значения отступов */
+}
+
+.menuCategories a:hover{
+	background: #cae2f6;
+	text-decoration: none;
+}
+
+.menuCategories li{
+	display: inline;
+}
+
 /*Стили index.htm*/
-.content img{
-	max-height: 300px;
-	float: left; /* Выравнивание по левому краю */
-    margin: 17px 7px 7px 0; /* Отступы вокруг картинки */
+.list img{
+	max-height: 100px;
+	float: top; /* Выравнивание по верхнему краю */
+    /*margin: 4px 7px 7px 0; /* Отступы вокруг картинки */
 }
 
 .created{
 	font-size: 12px
+}
+
+/*Стили detail.htm*/
+.content img{
+	max-height: 250px;
+	float: left; /* Выравнивание по левому краю */
+    margin: 4px 7px 7px 0; /* Отступы вокруг картинки */
 }

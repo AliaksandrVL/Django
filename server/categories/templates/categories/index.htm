@@ -1,0 +1,40 @@
+{% extends 'master.htm' %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'categories/style.css' %}">
+{% endblock %}
+
+{% block title %}
+    My Blog
+{% endblock %}
+
+{% block menu %}
+    {% include 'articles/includes/inc_menu.htm' %}
+{% endblock %}
+
+{% block menuCategories %}
+    {% include 'articles/includes/inc_menuCategories.htm' %}
+{% endblock %}
+
+{% block content %}
+    {% for itm in query %}
+        <div class="item">
+            <a href = "{% url 'categories:detail' itm.id %}"><h2>{{ itm.name|upper }}</h2></a>
+        </div>
+    {% endfor %}
+    
+    <div class="articles">
+        <div class="articles-list"></div>
+    </div>
+
+    {% block page_js %}
+        <script type="text/javascript" src="{% static 'categories/index.js' %}"></script>
+
+        <script>
+            axios.get('http://127.0.0.1:8000/articles/api/').then(renderData)
+        </script>
+    {% endblock %}
+    
+{% endblock %}
