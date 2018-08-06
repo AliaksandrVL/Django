@@ -13,6 +13,7 @@ class ArticleList(ListView):
     context_object_name = 'query'
     template_name = 'articles/index.htm'
     queryset = get_list_or_404(models.Article)
+    paginate_by = 1
     
 class ArticleDetail(DetailView):
     model = models.Article
