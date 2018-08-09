@@ -1,0 +1,21 @@
+{% extends 'master.htm' %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'articles/style.css' %}">
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input class="btn btn-danger" type="submit" value="Delete">
+    </form>
+{% endblock %}
