@@ -14,7 +14,6 @@ def api_product_list(request):
         'id': itm.id,
         'name': itm.name,
         'image': itm.image.name
-        #'category': itm.category
         }, query)
 
     context = json.dumps({'results': list(data)})
