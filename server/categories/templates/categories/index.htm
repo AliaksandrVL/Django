@@ -28,13 +28,13 @@
     <div class="articles">
         <div class="articles-list"></div>
     </div>
-
-    {% block page_js %}
-        <script type="text/javascript" src="{% static 'categories/index.js' %}"></script>
-
-        <script>
-            axios.get('http://127.0.0.1:8000/articles/api/').then(renderData)
-        </script>
-    {% endblock %}
-    
 {% endblock %}
+
+{% block page_js %}
+    <script type="text/javascript" src="{% static 'categories/index.js' %}"></script>
+
+    <script>
+        axios.get('http://127.0.0.1:8000/articles/api/').then(renderData)
+    </script>
+{% endblock %}
+    
